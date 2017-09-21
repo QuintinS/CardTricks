@@ -9,3 +9,5 @@ body {
     left: 0;
     box-sizing: border-box;
     list-style: none; }
+  .cardtricks-cards--animation-fastest .cardtricks-cards__card {
+    transition: transform 0.1s, top 0.1s, right 0.1s, bottom 0.1s, left 0.1s; }

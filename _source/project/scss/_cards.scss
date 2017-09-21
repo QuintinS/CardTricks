@@ -14,4 +14,19 @@
 
   }
 
+  &--animation-fastest {
+    .cardtricks-cards__card {
+      transition:
+        transform 0.1s,
+        top 0.1s,
+        right 0.1s,
+        bottom 0.1s,
+        left 0.1s;
+    }
+  }
+
+  &--animation-fast {
+
+  }
+
 }
