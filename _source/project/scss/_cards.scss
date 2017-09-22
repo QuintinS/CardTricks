@@ -21,9 +21,29 @@
 
   }
 
-  &--cardtricks-speed--fastest {
+  // DEAL TYPES
+  // i.e. fanning them out, scattering them, shuffling them
+
+  &.cardtricks-deal--fan {
+    .cardtricks-cards__card {
+
+    }
+  }
+
+  &.cardtricks-deal--fidget {
+    .cardtricks-cards__card {
+      transform-origin: center;
+    }
+  }
+
+
+  // CARD VELOCITY
+  // i.e. how quickly they move across the table
+
+  &.cardtricks-velocity--fastest {
     .cardtricks-cards__card {
       transition:
+        transform-origin .1s,
         transform .1s,
         top .1s,
         right .1s,
@@ -32,9 +52,10 @@
     }
   }
 
-  &--cardtricks-speed--fast {
+  &.cardtricks-velocity--fast {
     .cardtricks-cards__card {
       transition:
+        transform-origin .25s,
         transform .25s,
         top .25s,
         right .25s,
@@ -43,9 +64,10 @@
     }
   }
 
-  &--cardtricks-speed--medium {
+  &.cardtricks-velocity--medium {
     .cardtricks-cards__card {
       transition:
+        transform-origin .5s,
         transform .5s,
         top .5s,
         right .5s,
@@ -54,9 +76,10 @@
     }
   }
 
-  &--cardtricks-speed--slow {
+  &.cardtricks-velocity--slow {
     .cardtricks-cards__card {
       transition:
+        transform-origin .75s,
         transform .75s,
         top .75s,
         right .75s,
@@ -65,9 +88,10 @@
     }
   }
 
-  &--cardtricks-speed--slowest {
+  &.cardtricks-velocity--slowest {
     .cardtricks-cards__card {
       transition:
+        transform-origin 1s,
         transform 1s,
         top 1s,
         right 1s,

@@ -72,6 +72,7 @@ gulp.task('projectJs', function(done){
   .pipe(gulp.dest(projectDestJS))
   .pipe(sourcemaps.init())
     .pipe(concat(projectName + '.js'))
+    .pipe(gulp.dest(projectDestJS))
     .pipe(rename(projectName + '.min.js'))
     .pipe(uglify())
   .pipe(sourcemaps.write(""))

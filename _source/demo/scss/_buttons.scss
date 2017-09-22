@@ -3,8 +3,11 @@
   background: rgba(0,0,0,.75);
   color: #fff;
   text-align: center;
+  font-size: 18px;
+  font-weight: bold;
 
-  padding: 1em 1.4em;
+  margin: .25em;
+  padding: .8em 1.6em;
   border-radius: 50px;
   border: 0;
 
@@ -12,6 +15,17 @@
 
   &:hover {
     background: rgba(0,0,0,.85);
+  }
+
+  &.demo-button--secondary {
+
+    color: #333;
+    background: rgba(255,255,255,.75);
+
+    &:hover {
+      background: rgba(255,255,255,.85);
+    }
+
   }
 
 }

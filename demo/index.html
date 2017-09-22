@@ -16,7 +16,8 @@
 
   <!-- Cardtricks Resources -->
   <link rel="stylesheet" href="/dist/css/cardtricks.min.css">
-  <script src="/dist/js/cardtricks.min.js"></script>
+  <!-- <script src="/dist/js/cardtricks.min.js"></script> -->
+  <script src="/dist/js/cardtricks.js"></script>
 
 </head>
 <body>
@@ -26,7 +27,7 @@
   <div class="demo-container">
 
     <!-- <ul id="cardtricks-1" class="cardtricks-cards"> -->
-    <ul id="cardtricks-1" class="cardtricks-cards" data-cardtricks-type="fan" data-cardtricks-speed="slowest" data-cardtricks-ease="easeOut">
+    <ul id="cardtricks-1" class="cardtricks-cards">
         <li class="cardtricks-cards__card">
           <div class="argentum-card">
             <img src="/demo/images/archetype-card__jester--small.png" alt="">
@@ -74,30 +75,37 @@
         </li>
         <li class="cardtricks-cards__card">
           <div class="argentum-card">
-            <img src="/demo/images/archetype-card__sage--small.png" alt="">
+            <img src="/demo/images/archetype-card__magician--small.png" alt="">
           </div>
         </li>
         <li class="cardtricks-cards__card">
           <div class="argentum-card">
-            <img src="/demo/images/archetype-card__sage--small.png" alt="">
+            <img src="/demo/images/archetype-card__innocent--small.png" alt="">
           </div>
         </li>
         <li class="cardtricks-cards__card">
           <div class="argentum-card">
-            <img src="/demo/images/archetype-card__sage--small.png" alt="">
+            <img src="/demo/images/archetype-card__creator--small.png" alt="">
           </div>
         </li>
     </ul>
 
-    <div class="demo-actions">
+  </div>
 
-      <h2>You deal</h2>
+  <div class="demo-actions">
 
-      <button class="demo-button" id="flourish-1">Scatter</button>
-      <!-- <button class="demo-button" id="flourish-2">Fan from Center</button> -->
-      <!-- <button class="demo-button" id="flourish-3">Fan from Left to Right</button> -->
-      <!-- <button class="demo-button" id="flourish-4">Fan from Right to Left</button> -->
+    <button class="demo-button" id="button-init">Init</button>
+    <button class="demo-button" id="button-fidget">Fidget</button>
+    <button class="demo-button" id="button-scatter">Flick Up</button>
+    <!--
+    <button class="demo-button" id="button-flick-up">Scatter</button>
+    <button class="demo-button" id="button-fan-center">Fan from Center</button>
+    <button class="demo-button" id="button-spread-leftRight">Spread from Left to Right</button>
+    <button class="demo-button" id="button-spread-rightLeft">Spread from Right to Left</button>
+  -->
 
+    <div class="">
+        <button class="demo-button demo-button--secondary" id="button-stack">Stack</button>
     </div>
 
   </div>
