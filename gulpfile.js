@@ -50,10 +50,10 @@ var
 // Javascript Libs Pipeline
 gulp.task('projectLibs', function(done){
 
-  gulp.src(
+  gulp.src([
     'bower_components/jquery/dist/jquery.js',
     'bower_components/foundation-sites/js/*.js'
-  )
+  ])
   .pipe(plumber(errorHandler))
   .pipe(concat('libs.js'))
   .pipe(gulp.dest(projectDestJS))
@@ -74,7 +74,7 @@ gulp.task('projectJs', function(done){
     .pipe(concat(projectName + '.js'))
     .pipe(rename(projectName + '.min.js'))
     .pipe(uglify())
-  // .pipe(sourcemaps.write(""))
+  .pipe(sourcemaps.write(""))
   .pipe(gulp.dest(projectDestJS))
   .pipe(projects.livereload());
   done();
@@ -100,7 +100,7 @@ gulp.task('projectSass', function(done){
       .pipe(gulp.dest(projectDestCSS))
       .pipe(uglifycss())
       .pipe(rename(projectName + '.min.css'))
-      // .pipe(sourcemaps.write(""))
+      .pipe(sourcemaps.write(""))
     .pipe(gulp.dest(projectDestCSS))
     .pipe(projects.livereload());
   done();
@@ -112,14 +112,16 @@ gulp.task('projectSass', function(done){
 // Demo Libs Pipeline
 gulp.task('demoLibs', function(done){
 
-  gulp.src(
+  gulp.src([
     'bower_components/jquery/dist/jquery.js',
+    'bower_components/jquery-ui/jquery-ui.js',
     'bower_components/foundation-sites/js/*.js',
     'bower_components/highlightjs/highlight.pack.min.js'
-  )
+  ])
   .pipe(plumber(errorHandler))
-  .pipe(gulp.dest(demoDestJS))
+  // .pipe(gulp.dest(demoDestJS))
   .pipe(concat("demolibs.js"))
+  .pipe(gulp.dest(demoDestJS))
   .pipe(rename('demolibs.min.js'))
   .pipe(uglify())
   .pipe(gulp.dest(demoDestJS));
@@ -144,7 +146,7 @@ gulp.task('demoJs', function(done){
     .pipe(concat('demo.js'))
     .pipe(rename('demo.min.js'))
     .pipe(uglify())
-  // .pipe(sourcemaps.write(""))
+  .pipe(sourcemaps.write(""))
   .pipe(gulp.dest(demoDestJS))
   .pipe(projects.livereload());
   done();
@@ -170,7 +172,7 @@ gulp.task('demoSass', function(done){
       .pipe(gulp.dest(demoDestCSS))
       .pipe(uglifycss())
       .pipe(rename('demo.min.css'))
-      // .pipe(sourcemaps.write(""))
+      .pipe(sourcemaps.write(""))
     .pipe(gulp.dest(demoDestCSS))
     .pipe(projects.livereload());
   done();

@@ -9,15 +9,13 @@
 
   <title>Cardtricks</title>
 
-  <!-- Libraries -->
-  <script src="/dist/js/libs.min.js"></script>
-
   <!-- Demo Resources -->
-  <link type="text/css" rel="stylesheet" href="css/demo.min.css">
-  <script href="js/demo.min.js"></script>
+  <link rel="stylesheet" href="css/demo.min.css">
+  <script src="/demo/js/demolibs.min.js"></script>
+  <script src="/demo/js/demo.min.js"></script>
 
   <!-- Cardtricks Resources -->
-  <link type="text/css" rel="stylesheet" href="/dist/css/cardtricks.min.css">
+  <link rel="stylesheet" href="/dist/css/cardtricks.min.css">
   <script src="/dist/js/cardtricks.min.js"></script>
 
 </head>
@@ -27,7 +25,8 @@
 
   <div class="demo-container">
 
-    <ul id="cardtricks-1" class="cardtricks-1 cardtricks-cards cardtricks-cards--animation-fast">
+    <!-- <ul id="cardtricks-1" class="cardtricks-cards"> -->
+    <ul id="cardtricks-1" class="cardtricks-cards" data-cardtricks-type="fan" data-cardtricks-speed="slowest" data-cardtricks-ease="easeOut">
         <li class="cardtricks-cards__card">
           <div class="argentum-card">
             <img src="/demo/images/archetype-card__jester--small.png" alt="">
@@ -92,12 +91,12 @@
 
     <div class="demo-actions">
 
-      <h2>Flourishes</h2>
+      <h2>You deal</h2>
 
       <button class="demo-button" id="flourish-1">Scatter</button>
-      <button class="demo-button" id="flourish-2">Fan from Center</button>
-      <button class="demo-button" id="flourish-3">Fan from Left to Right</button>
-      <button class="demo-button" id="flourish-4">Fan from Right to Left</button>
+      <!-- <button class="demo-button" id="flourish-2">Fan from Center</button> -->
+      <!-- <button class="demo-button" id="flourish-3">Fan from Left to Right</button> -->
+      <!-- <button class="demo-button" id="flourish-4">Fan from Right to Left</button> -->
 
     </div>
 

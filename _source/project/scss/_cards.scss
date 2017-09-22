@@ -21,7 +21,7 @@
 
   }
 
-  &--animation-fastest {
+  &--cardtricks-speed--fastest {
     .cardtricks-cards__card {
       transition:
         transform .1s,
@@ -32,7 +32,7 @@
     }
   }
 
-  &--animation-fast {
+  &--cardtricks-speed--fast {
     .cardtricks-cards__card {
       transition:
         transform .25s,
@@ -40,6 +40,39 @@
         right .25s,
         bottom .25s,
         left .25s;
+    }
+  }
+
+  &--cardtricks-speed--medium {
+    .cardtricks-cards__card {
+      transition:
+        transform .5s,
+        top .5s,
+        right .5s,
+        bottom .5s,
+        left .5s;
+    }
+  }
+
+  &--cardtricks-speed--slow {
+    .cardtricks-cards__card {
+      transition:
+        transform .75s,
+        top .75s,
+        right .75s,
+        bottom .75s,
+        left .75s;
+    }
+  }
+
+  &--cardtricks-speed--slowest {
+    .cardtricks-cards__card {
+      transition:
+        transform 1s,
+        top 1s,
+        right 1s,
+        bottom 1s,
+        left 1s;
     }
   }
 

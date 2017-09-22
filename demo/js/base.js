@@ -1,4 +1,10 @@
-$("#flourish-1").on("click", function(){
-  console.log("Flourish 1");
-  $("#cardtricks-1").cardtricks();
+$(document).ready(function(){
+
+  $("#flourish-1").on("click", function(){
+    $("#cardtricks-1").cardtricks({
+      type: "scatter"
+    });
+  });
+
+
 });

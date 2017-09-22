@@ -1,10 +1,27 @@
+/**
+ *  CARD TRICKS
+ * *
+ *  Play the cards like a master with this simple library.
+ * *
+ *  @author      Quintin Schnehage
+ *  @copyright   Copyright (c) 2016
+ *  @license     Reserved
+ *  @since       Version 1.0
+ *
+ */
+
 ;(function ( $, window, document, undefined ) {
 
-    $.widget( "namespace.widgetname" , {
+    $.widget( "cardtricks.cardtricks" , {
 
-        //Options to be used as defaults
         options: {
-            someValue: null
+            type: "scatter", // "scatter" | "spreadLeftRight" | "spreadRightLeft",
+            cardMultiplier: 1,
+            speed: "fast",
+            ease: "easeOut",
+            animOptions: {
+
+            }
         },
 
         //Setup widget (eg. element creation, apply theming
@@ -17,6 +34,94 @@
             // on which the widget was called via this.element.
             // The options defined above can be accessed
             // via this.options this.element.addStuff();
+
+            this.options.element = this.element;
+
+            var speedClass;
+            var easeClass;
+
+            var data_type = this.element.attr("data-cardtricks-type");
+            var data_speed = this.element.attr("data-cardtricks-speed");
+            var data_ease = this.element.attr("data-cardtricks-ease");
+
+            this.element.removeAttr("data-cardtricks-type data-cardtricks-speed data-cardtricks-ease");
+
+            if ( data_type !== "") {
+              this.options.type = data_type;
+            }
+            if ( data_speed !== "") {
+              this.options.speed = data_speed;
+            }
+            if ( data_ease !== "") {
+              this.options.ease = data_ease;
+            }
+
+            this._trigger('cardtricks.create.complete', event);
+
+            this._init();
+
+        },
+
+        _init: function(){
+
+          var typeClass;
+          var speedClass;
+          var easeClass;
+
+          this.element.addClass("cardtricks-cards");
+
+          switch(this.options.speed){
+            case "fastest":
+              speedClass = "cardtricks-speed--fastest";
+              break;
+            case "fast":
+              speedClass = "cardtricks-speed--fast";
+              break;
+            case "medium":
+              speedClass = "cardtricks-speed--medium";
+              break;
+            case "slow":
+              speedClass = "cardtricks-speed--slow";
+              break;
+            case "slowest":
+              speedClass = "cardtricks-speed--slowest";
+              break;
+            default:
+              speedClass = "cardtricks-speed--fast";
+              break;
+          }
+
+          switch(this.options.ease){
+            case "easeInOut":
+              easeClass = "cardtricks-easeInOut";
+              break;
+            case "easeIn":
+              easeClass = "cardtricks-easeIn";
+              break;
+            case "easeOut":
+              easeClass = "cardtricks-easeOut";
+              break;
+            default:
+              easeClass = "cardtricks-easeOut";
+              break;
+          }
+
+          switch(this.options.type){
+            case "fan":
+              easeClass = "cardtricks-type--fan";
+              break;
+            default:
+              easeClass = "cardtricks-type--scatter";
+              break;
+          }
+
+          this.element
+            .addClass(speedClass + " " + easeClass + " " + typeClass);
+
+          this._trigger('cardtricks.init.complete', event);
+
+          this._animate();
+
         },
 
         // Destroy an instantiated plugin and clean up
@@ -32,22 +137,19 @@
             // calling the base widget
         },
 
-        methodB: function ( event ) {
-            //_trigger dispatches callbacks the plugin user
-            // can subscribe to
-            // signature: _trigger( "callbackName" , [eventObject],
-            // [uiObject] )
-            // eg. this._trigger( "hover", e /*where e.type ==
-            // "mouseenter"*/, { hovered: $(e.target)});
-            this._trigger('methodA', event, {
-                key: value
-            });
+        stack: function ( event ) {
+
+            // Return all the cards to their original position.
+
+            this._trigger('cardtricks.stack.complete', event);
         },
 
-        methodA: function ( event ) {
-            this._trigger('dataChanged', event, {
-                key: value
-            });
+        /*  ===== Private Methods ===== */
+
+        _animate: function (type, options) {
+
+          // Animate the cards.
+
         },
 
         // Respond to any changes the user makes to the
