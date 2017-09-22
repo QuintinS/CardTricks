@@ -1,22 +1,46 @@
-.demo-card {
+.cardtricks-1 {
 
-  $card-background: #91bfb0;
-  $card-number: 12;
+  .cardtricks-cards__card {
+    width: 250px;
+  }
 
-  $background: $card-background;
+}
 
-  background: $background;
-  border: 4px solid lighten($background, 10%);
 
-  width: 200px;
-  height: 300px;
-  border-radius: 8px;
+.cardtricks-2 {
 
-  @for $i from 1 through $card-number {
-    $this-background: lighten($background, $i*5%);
-    &:nth-child(#{$i}) {
-      background: $this-background;
+  .cardtricks-cards__card {
+
+    width: 250px;
+
+    img {
+      width: 100%;
     }
+
+    .demo-card--style-1 {
+
+      $card-background: #91bfb0;
+      $card-number: 12;
+
+      $background: $card-background;
+
+      background: $background;
+      border: 4px solid lighten($background, 10%);
+
+      border-radius: 8px;
+
+      @for $i from 1 through $card-number {
+
+        $this-background: lighten($background, $i*5%);
+
+        &:nth-child(#{$i}) {
+          background: $this-background;
+        }
+
+      }
+
+    }
+
   }
 
 }

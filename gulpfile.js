@@ -15,6 +15,7 @@ var
     demoSrcLibs = './_source/demo/js/libs/*js',
     demoDestJS = './demo/js',
     demoDestCSS = './demo/css',
+    demoHTML = './demo/**/*.html',
 
 
 /* ========== Modules ========== */
@@ -73,7 +74,7 @@ gulp.task('projectJs', function(done){
     .pipe(concat(projectName + '.js'))
     .pipe(rename(projectName + '.min.js'))
     .pipe(uglify())
-  .pipe(sourcemaps.write(""))
+  // .pipe(sourcemaps.write(""))
   .pipe(gulp.dest(projectDestJS))
   .pipe(projects.livereload());
   done();
@@ -99,7 +100,7 @@ gulp.task('projectSass', function(done){
       .pipe(gulp.dest(projectDestCSS))
       .pipe(uglifycss())
       .pipe(rename(projectName + '.min.css'))
-      .pipe(sourcemaps.write(""))
+      // .pipe(sourcemaps.write(""))
     .pipe(gulp.dest(projectDestCSS))
     .pipe(projects.livereload());
   done();
@@ -126,6 +127,13 @@ gulp.task('demoLibs', function(done){
 
 });
 
+// Demo HTML Pipeline
+gulp.task('demoHTML', function(done){
+  gulp.src(demoHTML)
+  .pipe(projects.livereload());
+  done();
+});
+
 // Demo Javascript Pipeline
 gulp.task('demoJs', function(done){
 
@@ -136,7 +144,7 @@ gulp.task('demoJs', function(done){
     .pipe(concat('demo.js'))
     .pipe(rename('demo.min.js'))
     .pipe(uglify())
-  .pipe(sourcemaps.write(""))
+  // .pipe(sourcemaps.write(""))
   .pipe(gulp.dest(demoDestJS))
   .pipe(projects.livereload());
   done();
@@ -162,7 +170,7 @@ gulp.task('demoSass', function(done){
       .pipe(gulp.dest(demoDestCSS))
       .pipe(uglifycss())
       .pipe(rename('demo.min.css'))
-      .pipe(sourcemaps.write(""))
+      // .pipe(sourcemaps.write(""))
     .pipe(gulp.dest(demoDestCSS))
     .pipe(projects.livereload());
   done();
@@ -176,9 +184,11 @@ gulp.task('watch', function(done){
 
   projects.livereload.listen();
 
+
   gulp.watch(projectSrcSCSS, gulp.series('projectSass'));
   gulp.watch(projectSrcJS, gulp.series('projectJs'));
 
+  gulp.watch(demoHTML, gulp.series('demoHTML'));
   gulp.watch(demoSrcSCSS, gulp.series('demoSass'));
   gulp.watch(demoSrcJS, gulp.series('demoJs'));
 

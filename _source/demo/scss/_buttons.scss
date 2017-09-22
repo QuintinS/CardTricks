@@ -1,0 +1,17 @@
+.demo-button {
+
+  background: rgba(0,0,0,.75);
+  color: #fff;
+  text-align: center;
+
+  padding: 1em 1.4em;
+  border-radius: 50px;
+  border: 0;
+
+  cursor: pointer;
+
+  &:hover {
+    background: rgba(0,0,0,.85);
+  }
+
+}

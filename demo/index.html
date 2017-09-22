@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+
 <html lang="en">
 <head>
 
@@ -11,26 +12,22 @@
   <!-- Libraries -->
   <script src="/dist/js/libs.min.js"></script>
 
-  <!-- Cardtricks Resources -->
-  <script src="/dist/js/cardtricks.min.js"></script>
-  <link rel="stylesheet" href="../dist/css/cardtricks.min.css">
-
   <!-- Demo Resources -->
-  <link rel="stylesheet" href="css/demo.min.css">
-  <link rel="stylesheet" href="../bower_components/highlightjs/styles/agate.css">
+  <link type="text/css" rel="stylesheet" href="css/demo.min.css">
+  <script href="js/demo.min.js"></script>
+
+  <!-- Cardtricks Resources -->
+  <link type="text/css" rel="stylesheet" href="/dist/css/cardtricks.min.css">
+  <script src="/dist/js/cardtricks.min.js"></script>
 
 </head>
 <body>
 
-  <div class="">
-
-
-
-  </div>
+  <h1>Card Tricks</h1>
 
   <div class="demo-container">
 
-    <ul id="cardtricks-1" class="cardtricks-cards cardtricks-cards--animation-fast">
+    <ul id="cardtricks-1" class="cardtricks-1 cardtricks-cards cardtricks-cards--animation-fast">
         <li class="cardtricks-cards__card">
           <div class="argentum-card">
             <img src="/demo/images/archetype-card__jester--small.png" alt="">
@@ -93,58 +90,18 @@
         </li>
     </ul>
 
-    <!--
-    <ul id="cardtricks-2" class="cardtricks-cards">
-        <li class="cardtricks-cards__card">
-          <div class="demo-card"></div>
-        </li>
-        <li class="cardtricks-cards__card">
-          <div class="demo-card"></div>
-        </li>
-        <li class="cardtricks-cards__card">
-          <div class="demo-card"></div>
-        </li>
-        <li class="cardtricks-cards__card">
-          <div class="demo-card"></div>
-        </li>
-        <li class="cardtricks-cards__card">
-          <div class="demo-card"></div>
-        </li>
-        <li class="cardtricks-cards__card">
-          <div class="demo-card"></div>
-        </li>
-        <li class="cardtricks-cards__card">
-          <div class="demo-card"></div>
-        </li>
-        <li class="cardtricks-cards__card">
-          <div class="demo-card"></div>
-        </li>
-        <li class="cardtricks-cards__card">
-          <div class="demo-card"></div>
-        </li>
-        <li class="cardtricks-cards__card">
-          <div class="demo-card"></div>
-        </li>
-        <li class="cardtricks-cards__card">
-          <div class="demo-card"></div>
-        </li>
-        <li class="cardtricks-cards__card">
-          <div class="demo-card"></div>
-        </li>
-    </ul>
-  -->
+    <div class="demo-actions">
+
+      <h2>Flourishes</h2>
+
+      <button class="demo-button" id="flourish-1">Scatter</button>
+      <button class="demo-button" id="flourish-2">Fan from Center</button>
+      <button class="demo-button" id="flourish-3">Fan from Left to Right</button>
+      <button class="demo-button" id="flourish-4">Fan from Right to Left</button>
+
+    </div>
 
   </div>
-
-  <!--
-  <pre>
-    <code>
-      $("#cardtricks-1").cardtricks({
-        animation: "scatter",
-      });
-    </code>
-  </pre>
--->
 
 </body>
 </html>

@@ -1,5 +1,64 @@
+html,
 body {
-  background: #338c6e;
+  height: 100%;
+}
+
+body {
+
+  $background: #412824;
+  // background: #338c6e;
+  // background: linear-gradient(#338c6e, #5a56c7); /* Standard syntax */
+  background-color: $background;
+  background-image: url('/demo/images/background.jpg');
+  background-size: cover;
+  font-size: 18px;
+
   padding: 0;
   margin: 0;
+
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+
+
+  text-shadow: 0 0 5px rgba(0,0,0,.5);
+  margin-top: 1em;
+  margin-bottom: 1em;
+  text-align: center;
+
+}
+
+h1 {
+  color: #fff;
+  font-size: 2.4em;
+}
+
+h2 {
+  color: #fff;
+  font-size: 2em;
+}
+
+h3 {
+  color: #fff;
+  font-size: 1.6em;
+}
+
+h4 {
+  color: #fff;
+  font-size: 1.4em;
+}
+
+h5 {
+  color: #fff;
+  font-size: 1.2em;
+}
+
+h6 {
+  color: #fff;
+  font-size: 1em;
 }
