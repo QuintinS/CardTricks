@@ -14,9 +14,12 @@ $(document).ready(function(){
 
     $("#cardtricks-1").cardtricks({
       deal: "fidget",
-      velocity: "fast",
+      dealOptions: {
+        cardDelay: 50,
+      },
       animOptions: {
-        rotation: 20,
+        velocity: "fastest",
+        rotation: 5,
         messy: true,
         messyMult: 2
       }
@@ -30,9 +33,12 @@ $(document).ready(function(){
 
     $("#cardtricks-1").cardtricks({
       deal: "flick",
-      velocity: "fast",
+      dealOptions: {
+        cardDelay: 150,
+      },
       animOptions: {
-        rotation: 20,
+        velocity: "fast",
+        rotation: 5,
         messy: true,
         messyMult: 1
       }

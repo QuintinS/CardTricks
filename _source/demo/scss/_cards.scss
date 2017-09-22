@@ -1,23 +1,30 @@
 #cardtricks-1 {
 
-  .cardtricks-cards__card {
-    width: 250px;
-  }
-
-}
-
-
-#cardtricks-2 {
+  height: 475px;
 
   .cardtricks-cards__card {
 
     width: 250px;
+    height: 475px;
 
     img {
       width: 100%;
     }
 
-    .demo-card--style-1 {
+  }
+
+}
+
+.cardtricks-cards {
+
+  &.cardtricks-cards--style-1 {
+
+    height: 400px;
+
+    .cardtricks-cards__card {
+
+      width: 250px;
+      height: 400px;
 
       $card-background: #91bfb0;
       $card-number: 12;

@@ -25,15 +25,11 @@
         options: {
             deal: "fidget", // "scatter" | "spreadLeftRight" | "spreadRightLeft",
             dealOptions: {
-              mode: "sequence", // "sequence" | "all" - whether to animate cards one at a time or all at once.
-              cardsToAnimate: "all", // "all" | integer - How many cards to animate.
-              cardDelay: 250, // The delay between one card being animated and nother, in ms
-              cardMultiplier: 1, // Multiplies the cards by this amount for the animation. Integer.
+              cardDelay: 0, // The delay between one card being animated and nother, in ms
             },
             animOptions: {
               velocity: "fast",
               ease: "easeOut",
-              duration: 0.5,
               messy: true, // true | false - Adds a bit of randomness for a natural feel.
               messyMult: 1, // Number - adjust randomness
               rotation: 10,
@@ -62,7 +58,7 @@
 
         _init: function(){
 
-          this.options = $.extend(this.defaults, this.options);
+          this.options = $.extend(true, this.defaults, this.options);
 
           var dealClass;
           var velocityClass;
@@ -83,7 +79,7 @@
               break;
           }
 
-          switch(this.options.velocity){
+          switch(this.options.animOptions.velocity){
             case "fastest":
               velocityClass = "cardtricks-velocity--fastest";
               this.storage.duration = 0.1;
@@ -109,7 +105,7 @@
               break;
           }
 
-          switch(this.options.ease){
+          switch(this.options.animOptions.ease){
             case "easeInOut":
               easeClass = "cardtricks-easeInOut";
               break;
@@ -148,76 +144,99 @@
 
           // Animate the cards.
 
-          var cards = this.element.find(".cardtricks-cards__card");
+          // All the cards. Must be reversed because position: absolute stacks cards in reverse.
+          var cards = $(this.element.find(".cardtricks-cards__card").get().reverse());
 
-
-          var _rotation = this.options.animOptions.rotation;
-          var _origin = "center";
+          var _dealMode = this.options.dealOptions.mode;
+          var _dealCardDelay = this.options.dealOptions.cardDelay;
+          var _animRotation = this.options.animOptions.rotation;
+          var _animDuration = this.options.animOptions.duration;
+          var _animEase = this.options.animOptions.ease;
           var _messy;
           var _messyAmplitude = this.options.animOptions.messyMult;
 
-          var queue = $.Deferred().resolve();
+          var animation;
 
           if (typeof this.options.animOptions === "object") {
             _messy = this.options.animOptions.messy === true ? true : false;
           }
 
-          // Loop through all cards, animating them.
+          var fidget = function(){
 
-          switch(this.options.deal) {
-            case "fidget":
-              fidget();
-              break;
-            case "flick":
-              flick();
-              break;
-            default:
-              fidget();
-              break;
-          }
+            var rotation;
+            var animation;
 
-          function fidget(){
+            var transformOriginX = 50 - (50 * noise()) + "%";
+            var transformOriginY = 50 - (50 * noise()) + "%";
+
+            if (_messy) {
+              rotation = _animRotation * noise();
+            }
+
+            animation = {
+              "transform": "rotate(" + rotation + "deg)",
+              "transform-origin": transformOriginX + " " + transformOriginY
+            };
+
+            return animation;
+
+          };
+
+          var flick = function(){
+
+            var rotation;
+            var animation;
+
+            var transformOriginX = 50 - (50 * noise()) + "%";
+            var transformOriginY = 50 - (50 * noise()) + "%";
+
+            if (_messy) {
+              rotation = _animRotation * noise();
+            }
+
+            animation = {
+              "transform": "rotate(" + rotation + "deg)",
+              "transform-origin": transformOriginX + " " + transformOriginY,
+              "top": "-100%"
+            };
+
+            return animation;
+
+          };
+
+          function animate(){
 
             cards.each(function(index, card){
 
               var rotation;
               var origin;
 
-              if (_messy) {
-                rotation = _rotation * noise();
-                origin = 50 + 50 * noise() + "% " + 50 + 50 * noise() + "%";
-              }
-              else {
-                origin = "center";
-              }
-
-              $(card).css({
-                "transform": "rotate(" + rotation + "deg)",
-                "transform-origin": origin
-              });
+              $(card)
+                .delay(_dealCardDelay * index)
+                .queue(function(next){
+                  $(this).css(animation());
+                  next();
+                });
 
             });
 
           }
 
-          function flick(){
+          // Loop through all cards, animating them.
 
-            cards.each(function(index, card){
-
-              var rotation;
-
-              if (_messy) {
-                rotation = _rotation * noise();
-              }
-
-              $(card).css({
-                "transform": "rotate(" + rotation + "deg)",
-                "transform-origin": 50 + 50 * noise() + "% " + 50 + 50 * noise() + "%"
-              });
-
-            });
-
+          switch(this.options.deal) {
+            case "fidget":
+              animation = fidget;
+              break;
+            case "flick":
+              animation = flick;
+              break;
+            default:
+              animation = fidget;
+              break;
           }
+
+          animate();
 
 
 
