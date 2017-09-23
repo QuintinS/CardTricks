@@ -26,6 +26,7 @@
             deal: "fidget", // "scatter" | "spreadLeftRight" | "spreadRightLeft",
             dealOptions: {
               cardDelay: 0, // The delay between one card being animated and nother, in ms
+              direction: "up",
             },
             animOptions: {
               velocity: "fast",
@@ -58,7 +59,7 @@
 
         _init: function(){
 
-          this.options = $.extend(true, this.defaults, this.options);
+          // this.options = $.extend(true, this.defaults, this.options);
 
           var dealClass;
           var velocityClass;
@@ -145,10 +146,18 @@
           // Animate the cards.
 
           // All the cards. Must be reversed because position: absolute stacks cards in reverse.
-          var cards = $(this.element.find(".cardtricks-cards__card").get().reverse());
+          var cards;
+
+          if (this.options.dealOptions.cards == "allExceptLast") {
+            cards = $(this.element.find(".cardtricks-cards__card:not(:first-child)").get().reverse());
+          }
+          else {
+            cards = $(this.element.find(".cardtricks-cards__card").get().reverse());
+          }
 
           var _dealMode = this.options.dealOptions.mode;
           var _dealCardDelay = this.options.dealOptions.cardDelay;
+          var _dealDirection = this.options.dealOptions.direction;
           var _animRotation = this.options.animOptions.rotation;
           var _animDuration = this.options.animOptions.duration;
           var _animEase = this.options.animOptions.ease;
@@ -185,7 +194,7 @@
           var flick = function(){
 
             var rotation;
-            var animation;
+            var animation = {};
 
             var transformOriginX = 50 - (50 * noise()) + "%";
             var transformOriginY = 50 - (50 * noise()) + "%";
@@ -194,11 +203,23 @@
               rotation = _animRotation * noise();
             }
 
-            animation = {
-              "transform": "rotate(" + rotation + "deg)",
-              "transform-origin": transformOriginX + " " + transformOriginY,
-              "top": "-100%"
-            };
+            animation["transform"] = "rotate(" + rotation + "deg)";
+            animation["transform-origin"] = transformOriginX + " " + transformOriginY;
+
+            switch(_dealDirection){
+              case"up":
+                animation["top"] = "-200%";
+                break;
+              case"down":
+                animation["bottom"] = "-200%";
+                break;
+              case"left":
+                animation["left"] = "-200%";
+                break;
+              case"right":
+                animation["right"] = "-200%";
+                break;
+            }
 
             return animation;
 
@@ -207,9 +228,6 @@
           function animate(){
 
             cards.each(function(index, card){
-
-              var rotation;
-              var origin;
 
               $(card)
                 .delay(_dealCardDelay * index)
@@ -237,8 +255,6 @@
           }
 
           animate();
-
-
 
           // A little noise function for injecting some randomness.
           function noise(){

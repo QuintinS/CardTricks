@@ -2,6 +2,7 @@
    v2.0 | 20110126
    License: none (public domain)
 */
+@import url("https://fonts.googleapis.com/css?family=Oswald:400,700");
 html, body, div, span, applet, object, iframe,
 h1, h2, h3, h4, h5, h6, p, blockquote, pre,
 a, abbr, acronym, address, big, cite, code,
@@ -63,6 +64,10 @@ h3,
 h4,
 h5,
 h6 {
+  font-family: 'Oswald', sans-serif;
+  font-weight: bold;
+  text-transform: uppercase;
+  letter-spacing: 2px;
   text-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
   margin-top: 1em;
   margin-bottom: 1em;
@@ -70,7 +75,9 @@ h6 {
 
 h1 {
   color: #fff;
-  font-size: 2.4em; }
+  font-size: 4em;
+  margin-top: 0;
+  margin-bottom: 0; }
 
 h2 {
   color: #fff;
@@ -91,6 +98,15 @@ h5 {
 h6 {
   color: #fff;
   font-size: 1em; }
+
+.demo-header {
+  background-color: #412824;
+  background-image: url("/demo/images/background-light.jpg");
+  background-size: cover;
+  padding: 20px 0;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.75);
+  position: relative;
+  z-index: 100; }
 
 .demo-container {
   width: 500px;
