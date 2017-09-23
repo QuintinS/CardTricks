@@ -46,7 +46,7 @@ $(document).ready(function(){
         velocity: "fastest",
         rotation: 10,
         messy: true,
-        messyMult: 2
+        messyMult: 1.5
       }
     });
 
@@ -84,6 +84,8 @@ $(document).ready(function(){
   $("#button-double").on("click", function(event){
 
     $($("#cardtricks-1").html()).appendTo("#cardtricks-1");
+
+    $("#cardtricks-1 .cardtricks-cards__card").shuffle();
 
     $("#button-fidget").trigger("click");
 
