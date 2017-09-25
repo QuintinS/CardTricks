@@ -121,8 +121,11 @@
               break;
           }
 
+          $(this.element.children())
+            .css("transition-duration", this.storage.duration + "s");
+
           this.element
-            .addClass(velocityClass + " " + easeClass + " " + dealClass);
+            .addClass(easeClass + " " + dealClass);
 
           this._trigger('cardtricks.init.complete', event);
 
@@ -163,6 +166,7 @@
           var _animEase = this.options.animOptions.ease;
           var _messy;
           var _messyAmplitude = this.options.animOptions.messyMult;
+          var _totalCards = cards.length;
 
           var animation;
 
@@ -227,14 +231,28 @@
 
           function animate(){
 
+            var cardsToAnimate = _totalCards;
+            var last = false;
+
             cards.each(function(index, card){
 
+              if ((cardsToAnimate - 1) === index) {
+                last = true;
+              }
+
+              // console.log(cardsToAnimate - 1);
+              // console.log(index);
+              // console.log(last);
+
               $(card)
-                .delay(_dealCardDelay * index)
-                .queue(function(next){
-                  $(this).css(animation());
-                  next();
-                });
+              .delay(_dealCardDelay * index)
+              .queue(function(next){
+
+                $(this).css(animation());
+                next();
+
+              });
+
 
             });
 

@@ -158,6 +158,17 @@ h6 {
     .cardtricks-cards.cardtricks-cards--style-1 .cardtricks-cards__card:nth-child(12) {
       background: white; }
 
+.argentum-card .argentum-card__front,
+.argentum-card .argentum-card__back {
+  position: absolute; }
+
+.argentum-card.argentum-card--turned .argentum-card__back {
+  transform: rotatey(180deg); }
+
+.argentum-card.argentum-card--turned .argentum-card__front {
+  transform: rotatey(180deg);
+  z-index: 10; }
+
 .demo-button {
   background: rgba(0, 0, 0, 0.75);
   color: #fff;

@@ -51,3 +51,26 @@
   }
 
 }
+
+
+.argentum-card {
+
+  .argentum-card__front,
+  .argentum-card__back {
+  	position: absolute;
+  }
+
+  &.argentum-card--turned {
+
+    .argentum-card__back {
+  		transform: rotatey(180deg);
+  	}
+
+  	.argentum-card__front {
+  		transform: rotatey(180deg);
+  		z-index: 10;
+  	}
+
+  }
+
+}
