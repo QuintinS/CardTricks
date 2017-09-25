@@ -62,7 +62,6 @@
           // this.options = $.extend(true, this.defaults, this.options);
 
           var dealClass;
-          var velocityClass;
           var easeClass;
 
           switch(this.options.deal){
@@ -82,27 +81,22 @@
 
           switch(this.options.animOptions.velocity){
             case "fastest":
-              velocityClass = "cardtricks-velocity--fastest";
               this.storage.duration = 0.1;
               break;
             case "fast":
-              velocityClass = "cardtricks-velocity--fast";
               this.storage.duration = 0.25;
               break;
             case "medium":
-              velocityClass = "cardtricks-velocity--medium";
               this.storage.duration = 0.5;
               break;
             case "slow":
-              velocityClass = "cardtricks-velocity--slow";
               this.storage.duration = 0.75;
               break;
             case "slowest":
-              velocityClass = "cardtricks-velocity--slowest";
               this.storage.duration = 1;
               break;
             default:
-              velocityClass = "cardtricks-velocity--fast";
+              this.storage.duration = 0.25;
               break;
           }
 
@@ -172,10 +166,6 @@
           var cardsToAnimate = _totalCards;
 
           var totalDuration = (cardsToAnimate * this.storage.duration) * 1000;
-
-          console.log(this.storage.duration);
-          console.log(cardsToAnimate);
-          console.log(totalDuration);
 
           var animation;
 
