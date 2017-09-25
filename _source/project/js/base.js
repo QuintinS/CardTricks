@@ -150,6 +150,7 @@
 
           // All the cards. Must be reversed because position: absolute stacks cards in reverse.
           var cards;
+          var $this = this;
 
           if (this.options.dealOptions.cards == "allExceptLast") {
             cards = $(this.element.find(".cardtricks-cards__card:not(:first-child)").get().reverse());
@@ -167,6 +168,14 @@
           var _messy;
           var _messyAmplitude = this.options.animOptions.messyMult;
           var _totalCards = cards.length;
+
+          var cardsToAnimate = _totalCards;
+
+          var totalDuration = (cardsToAnimate * this.storage.duration) * 1000;
+
+          console.log(this.storage.duration);
+          console.log(cardsToAnimate);
+          console.log(totalDuration);
 
           var animation;
 
@@ -231,18 +240,17 @@
 
           function animate(){
 
-            var cardsToAnimate = _totalCards;
             var last = false;
+            var animationName = $this.options.deal;
+
+            $this.element.trigger('cardtricks.' + animationName + '.start', event);
+
+            // Set a timer that ends when the animation finishes.
+            setTimeout(function(){
+              $this.element.trigger('cardtricks.' + animationName + '.finish', event);
+            }, totalDuration);
 
             cards.each(function(index, card){
-
-              if ((cardsToAnimate - 1) === index) {
-                last = true;
-              }
-
-              // console.log(cardsToAnimate - 1);
-              // console.log(index);
-              // console.log(last);
 
               $(card)
               .delay(_dealCardDelay * index)

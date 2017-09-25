@@ -99,5 +99,9 @@ $(document).ready(function(){
 
   });
 
+    $("#cardtricks-1").on("cardtricks.flick.finish", function(){
+      console.log("Flick Finished");
+    });
+
 
 });
