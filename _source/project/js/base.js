@@ -165,7 +165,8 @@
 
           var cardsToAnimate = _totalCards;
 
-          var totalDuration = (cardsToAnimate * this.storage.duration) * 1000;
+          // Total duration of the animation, used to trigger "finish" event.
+          var totalDuration = (cardsToAnimate * _dealCardDelay);
 
           var animation;
 
